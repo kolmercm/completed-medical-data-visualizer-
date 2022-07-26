@@ -8,6 +8,7 @@ class CatPlotTestCase(unittest.TestCase):
     def setUp(self):
         self.fig = medical_data_visualizer.draw_cat_plot()
         self.ax = self.fig.axes[0]
+        self.maxDiff = None
     
     def test_line_plot_labels(self):
         actual = self.ax.get_xlabel()
@@ -24,7 +25,7 @@ class CatPlotTestCase(unittest.TestCase):
 
     def test_bar_plot_number_of_bars(self):
         actual = len([rect for rect in self.ax.get_children() if isinstance(rect, mpl.patches.Rectangle)])
-        expected = 13
+        expected = 1
         self.assertEqual(actual, expected, "Expected a different number of bars chart.")
 
 
